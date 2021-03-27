@@ -14,6 +14,8 @@ public class AutoCar {
 	public void drive() {
 		System.out.println("Self Driving Car Control");
 		
+		BlackBox blackBox = new BlackBox();
+		
 		while(true){
 			System.out.print("Car speed between 60 and 100 : ");
 			this.speed = scan.nextInt();
@@ -27,7 +29,7 @@ public class AutoCar {
 		this.brake = 0;
 		this.temp = rand.nextInt(4) + 23;
 		
-		DriveMediator mediator = new DriveMediator();
+		DriveMediator mediator = new DriveMediator(this);
 		
 		SpeedControl speed = new SpeedControl(mediator);
 		Brake brake = new Brake(mediator);
