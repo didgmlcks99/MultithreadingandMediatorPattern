@@ -3,8 +3,7 @@ package Autocar;
 public class Main {
 
 	public static void main(String[] args) {
-		Car benzGLS = new Car();
+		CarBlackBox benzGLS = new CarBlackBox();
 		benzGLS.start();
 	}
-
 }
