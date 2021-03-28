@@ -26,6 +26,7 @@ public class BlackBox {
 		System.out.println("Number of Pedestrian Sensed : " + pedestrian);
 		System.out.println("Number of Red Traffic Light Sensed : " + redLight);
 		System.out.println("Number of Distance Control : " + distance);
+		System.out.println("Number of Lane Control : " + lane);
 		System.out.println("Number of Heater Turned On : " + heater);
 		System.out.println("Number of Aircon Turned On : " + aircon);
 		System.out.println("=== Black Box in Sleep Mode ===");

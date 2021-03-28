@@ -5,7 +5,6 @@ import java.util.Random;
 public class DriveMediator {
 	public int initSpeed;
 	public int speed;
-	public int brake;
 	public int temp;
 	public int event;
 	public BlackBox blackBox = new BlackBox();
@@ -21,7 +20,6 @@ public class DriveMediator {
 		
 		System.out.println("Speed set to : " + initSpeed + " KM");
 		
-		this.brake = benz.brake;
 		this.temp = benz.temp;
 		
 		System.out.println("Temp set to : " + temp + " degrees");

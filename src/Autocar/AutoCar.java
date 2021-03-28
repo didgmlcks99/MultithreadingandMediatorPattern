@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class AutoCar {
 	public int speed;
-	public int brake;
 	public int temp;
 	
 	static Scanner scan = new Scanner(System.in);
@@ -16,17 +15,21 @@ public class AutoCar {
 		
 		BlackBox blackBox = new BlackBox();
 		
-		while(true){
+		String strSpeed;
+		while(true) {
 			System.out.print("Car speed between 60 and 100 : ");
-			this.speed = scan.nextInt();
+			strSpeed = scan.next();
 			
-			if(this.speed>100 || this.speed<60) {
-				System.out.println("SPEED ERROR ! SPEED SHOULD BE BETWEEN 60 AND 100!");
-			}else {
+			try {
+				this.speed = Integer.parseInt(strSpeed);
+				if(this.speed > 100 || this.speed < 60) {
+					throw new ArithmeticException("Access denied - it must be between 60 and 100");
+				}
 				break;
+			}catch(Exception e){
+				System.out.println("[ERROR] speed should be between 60 and 100!");
 			}
 		}
-		this.brake = 0;
 		this.temp = rand.nextInt(4) + 23;
 		
 		DriveMediator mediator = new DriveMediator(this);
