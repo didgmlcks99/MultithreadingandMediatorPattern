@@ -11,41 +11,40 @@ public class TempControl extends Thread{
 		med = mediator;
 	}
 	
-	public void run() {
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
+	public void run() {		
+		giveTime(5000);
 		System.out.println("Air Conditioner at Work.");
 		
-		for(int i = 0; i<5; i++) {
+		for(int i = 0; i<15; i++) {
 			detectEvent();
-			if(event == 1) {
+			
+			if(event == 10) {
+				newTemp = med.check(event);
 				
-				newTemp = med.checkSpeed();
-				System.out.println("Thread for Air Condintioner, current Temperature : " + newTemp);
+				giveTime(2000);
 				
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				
-				if(newTemp > med.getInitSpeed() + 3) {
-					newTemp = med.balanceTemp();
-					System.out.println("Turn on AirCon to Lower Temperature, current Temperature : " + newTemp);
-				}else if(newTemp < med.getInitSpeed() - 3) {
-					newTemp = med.balanceTemp();
-					System.out.println("Turn on Heater to Higher Temperature, current Temperature : " + newTemp);
+				if(newTemp > 26) {
+					newTemp = med.balance(event);
+					System.out.println("Turn on AirCon to Lower Temperature, current Temperature : " + newTemp + " degrees");
+				}else if(newTemp < 23) {
+					newTemp = med.balance(event);
+					System.out.println("Turn on Heater to Higher Temperature, current Temperature : " + newTemp + " degrees");
 				}
 			}
+			giveTime(3000);
 		}
 	}
 	
 	private void detectEvent() {
 		Random rand = new Random();
-		event = rand.nextInt(2);
+		event = rand.nextInt(2) + 9;
+	}
+	
+	private void giveTime(int time) {
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

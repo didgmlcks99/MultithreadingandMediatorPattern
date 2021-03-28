@@ -36,15 +36,19 @@ public class AutoCar {
 		TempControl temp = new TempControl(mediator);
 		DistLane distLane = new DistLane(mediator);
 		
-		speed.setPriority(10);
-		brake.setPriority(9);
+		speed.setPriority(6);
+		brake.setPriority(10);
 		temp.setPriority(3);
-		distLane.setPriority(7);
+		distLane.setPriority(8);
 		
 		speed.start();
 		brake.start();
 		temp.start();
 		distLane.start();
+		
+		while(speed.isAlive() || brake.isAlive() || temp.isAlive() || distLane.isAlive()) {}
+		blackBox = mediator.getBlackBox();
+		blackBox.printBlackBoxData();
 		
 		scan.close();
 	}

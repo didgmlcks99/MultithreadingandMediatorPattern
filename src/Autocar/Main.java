@@ -8,6 +8,3 @@ public class Main {
 	}
 
 }
-
-//hello i am from windows
-//oh nice! i am from mac
